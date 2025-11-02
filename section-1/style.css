@@ -1,0 +1,23 @@
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: goldenrod;
+    border-radius: 46%;
+    box-shadow: 500px 50px 60px 55px blueviolet;
+ margin:30px 25px 45px 54px;
+ padding: 30px 40px;
+ border: 7px solid green;
+ border-style: groove;
+}
+body{
+    font-family: Quicksand;
+}
+.head1{
+    text-shadow: 8px 7px grey;
+}
+#head2{
+text-shadow: 8px 8px greenyellow;
+}
+#Q{
+    font-family: Zalando+Sans;
+}
