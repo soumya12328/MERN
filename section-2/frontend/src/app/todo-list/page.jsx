@@ -1,5 +1,6 @@
 'use client';
 
+import { IconTrashX } from '@tabler/icons-react';
 import React, { useState } from 'react'
 
 const TodoList = () => {
@@ -32,6 +33,14 @@ const TodoList = () => {
 
   }
 
+const deleteTask = (index) => {
+  console.log(index);
+  const temp = taskList;
+  temp.splice(index, 1)
+  setTaskList([...temp])
+  
+}
+
   return (
     <div className='bg-gray-300 min-h-screen'>
       <h1 className='text-center text-6xl font-bold my-5'> Todo List</h1>
@@ -58,23 +67,31 @@ const TodoList = () => {
           {
             taskList.map((task, index) => {
               return (
-                <div 
-                style={{borderColor: task.completed ? 'green' : 'red'}}
-                className='border-4 rounded-lg p-4 mb-4 flex justify-between items-center'>
+                <div
+                  key={index}
+                  style={{ borderColor: task.completed ? 'Limegreen' : 'red', backgroundColor: task.completed ? '#ddffdd' : '#ffdddd' }}
+                  className='border-4 rounded-lg p-4 mb-4 flex justify-between items-center'>
                   <div className='flex gap-3'>
                     <input type="checkbox"
                       checked={task.completed}
-                      onChange={(e)=>{
+                      onChange={(e) => {
                         const temp = taskList;
                         temp[index].completed = e.target.checked;
+                        console.log(temp[index]);
+                        
                         setTaskList([...temp]);
                       }}
-                      />
-                    <p>{task.text}</p>
+                    />
+                    <p
+                      style={{ textDecoration: task.completed ? 'Line-through' : 'none' }}
+                      className='text-3xl wrap-anywhere max-w-[600px]'>{task.text}</p>
                   </div>
                   <p>{task.date} at {task.time}</p>
-                  <button className='bg-red-600 text-white px-4 rounded-xl'>
-                    Delete</button>
+                  <button 
+                  onClick={()=> deleteTask(index)}
+                  className='bg-red-600 text-white px-4 rounded-xl'>
+                    <IconTrashX size={45} color='black'/>
+                    </button>
                 </div>
               )
             })
