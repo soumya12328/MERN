@@ -3,7 +3,7 @@ import React from 'react'
 const Login = () => {
     return (
         
-        <div className="mt-7 w-1/3 mx-auto bg-cyan-400 border border-gray-200 rounded-xl shadow-2xs bg dark:border-neutral-700">
+        <div className="mt-7 w-1/3 mx-auto bg-cyan-400 border border-gray-200 rounded-xl shadow-2xs bg dark:border-white-700">
   <div className="p-4 sm:p-7">
     <div className="text-center">
       <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
@@ -69,7 +69,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="py-2.5 sm:py-3 px-4 block w-full border-gray-800  rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 required=""
                 aria-describedby="email-error"
               />
