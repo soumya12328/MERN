@@ -1,6 +1,26 @@
+'use client'
+import { useFormik } from 'formik'
 import React from 'react'
 
+import * as Yup from 'yup'
+
+const LoginSchema = Yup.object().shape({
+email: Yup.string().email('Invalid email').required('Email chahiye bhai'),
+password: Yup.string().min(7, 'Password too short').required('Password chahiye bhai..!')
+})
+
 const Login = () => {
+  const loginForm =useFormik({
+    initialValues:{
+      email:'',
+      password:''
+    },
+    onSubmit:(values)=>{
+      console.log(values);
+      
+    },
+validationSchema:LoginSchema,
+  })
     return (
         
         <div className="mt-7 w-1/3 mx-auto bg-cyan-400 border border-gray-200 rounded-xl shadow-2xs bg dark:border-white-700">
@@ -54,7 +74,8 @@ const Login = () => {
         Or
       </div>
       {/* Form */}
-      <form>
+      <form 
+      onSubmit={loginForm.handleSubmit}>
         <div className="grid gap-y-4">
           {/* Form Group */}
           <div>
@@ -69,6 +90,8 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
+
+                onChange={loginForm.values.email}
                 className="py-2.5 sm:py-3 px-4 block w-full border-gray-800  rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 required=""
                 aria-describedby="email-error"
@@ -86,9 +109,14 @@ const Login = () => {
                 </svg>
               </div>
             </div>
+            {
+            (loginForm.errors.email && loginForm.touched.email) &&(
             <p className="hidden text-xs text-red-600 mt-2" id="email-error">
+              {loginForm.errors.email}
               Please include a valid email address so we can get back to you
             </p>
+            )
+          }
           </div>
           {/* End Form Group */}
           {/* Form Group */}
@@ -112,6 +140,9 @@ const Login = () => {
                 type="password"
                 id="password"
                 name="password"
+onChange={loginForm.handleChange}
+value={loginForm.values.password}
+
                 className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 required=""
                 aria-describedby="password-error"
